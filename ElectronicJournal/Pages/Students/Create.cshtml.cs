@@ -27,18 +27,22 @@ namespace ElectronicJournal.Pages.Students
         [BindProperty]
         public Student Student { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var newStudent = new Student();
+
+            if (await TryUpdateModelAsync<Student>(
+                newStudent,
+                "student",   
+                s => s.FirstName, s => s.LastName, s => s.EnrollmentDate,
+                s => s.GroupName, s => s.DOB, s => s.PhoneNumber))
             {
-                return Page();
+                _context.Students.Add(newStudent);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Students.Add(Student);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }
