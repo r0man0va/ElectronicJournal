@@ -20,7 +20,6 @@ namespace ElectronicJournal.Pages.Students
         }
 
         public string NameSort { get; set; }
-        public string DateSort { get; set; }
         public string GroupSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
@@ -30,8 +29,7 @@ namespace ElectronicJournal.Pages.Students
         {
             // using System;
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
-            GroupSort = String.IsNullOrEmpty(sortOrder) ? "group_sort" : "";
+            GroupSort = (sortOrder == "group_default") ? "group_desc" : "group_default";
 
             CurrentFilter = searchString;
 
@@ -49,14 +47,11 @@ namespace ElectronicJournal.Pages.Students
                 case "name_desc":
                     studentsIQ = studentsIQ.OrderByDescending(s => s.LastName);
                     break;
-                case "group_sort":
+                case "group_default":
                     studentsIQ = studentsIQ.OrderBy(s => s.GroupName);
                     break;
-                case "Date":
-                    studentsIQ = studentsIQ.OrderBy(s => s.EnrollmentDate);
-                    break;
-                case "date_desc":
-                    studentsIQ = studentsIQ.OrderByDescending(s => s.EnrollmentDate);
+                case "group_desc":
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.GroupName);
                     break;
                 default:
                     studentsIQ = studentsIQ.OrderBy(s => s.LastName);
