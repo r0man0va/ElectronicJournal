@@ -1,11 +1,11 @@
 ﻿@page
 @model ErrorModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = "Ошибка";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Ошибка.</h1>
+<h2 class="text-danger">Произошла ошибка во время обработки вашего запроса.</h2>
 
 @if (Model.ShowRequestId)
 {
@@ -14,7 +14,7 @@
     </p>
 }
 
-<h3>Development Mode</h3>
+<h3>Режим разработчика</h3>
 <p>
     Swapping to the <strong>Development</strong> environment displays detailed information about the error that occurred.
 </p>
