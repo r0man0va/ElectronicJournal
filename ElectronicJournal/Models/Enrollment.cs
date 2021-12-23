@@ -4,9 +4,9 @@ namespace ElectronicJournal.Models
 {
     public enum Grade
     {
-        Bad = 3,
-        Good,
-        Excellent
+        Удовлетворительно = 3,
+        Хорошо,
+        Отлично
     }
 
     public class Enrollment
