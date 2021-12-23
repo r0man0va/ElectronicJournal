@@ -19,11 +19,51 @@ namespace ElectronicJournal.Pages.Students
             _context = context;
         }
 
+        public string NameSort { get; set; }
+        public string DateSort { get; set; }
+        public string GroupSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
         public IList<Student> Student { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            Student = await _context.Students.ToListAsync();
+            // using System;
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            GroupSort = String.IsNullOrEmpty(sortOrder) ? "group_sort" : "";
+
+            CurrentFilter = searchString;
+
+            IQueryable<Student> studentsIQ = from s in _context.Students
+                                             select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                studentsIQ = studentsIQ.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.LastName);
+                    break;
+                case "group_sort":
+                    studentsIQ = studentsIQ.OrderBy(s => s.GroupName);
+                    break;
+                case "Date":
+                    studentsIQ = studentsIQ.OrderBy(s => s.EnrollmentDate);
+                    break;
+                case "date_desc":
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                default:
+                    studentsIQ = studentsIQ.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            Student = await studentsIQ.AsNoTracking().ToListAsync();
         }
     }
 }
