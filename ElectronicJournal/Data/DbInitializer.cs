@@ -213,7 +213,7 @@ namespace ElectronicJournal.Data
 
             var enrollments = new Enrollment[]
             {
-                    new Enrollment { Student = shestakov, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = shestakov, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = shestakov, Course = algebra, Grade = Grade.Отлично },
                     new Enrollment { Student = shestakov, Course = lifp, Grade = Grade.Отлично },
                     new Enrollment { Student = shestakov, Course = tokb, Grade = Grade.Отлично },
@@ -221,7 +221,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = shestakov, Course = geometria, Grade = Grade.Отлично },
                     new Enrollment { Student = shestakov, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = romanova, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = romanova, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = romanova, Course = algebra, Grade = Grade.Отлично },
                     new Enrollment { Student = romanova, Course = lifp, Grade = Grade.Отлично },
                     new Enrollment { Student = romanova, Course = tokb, Grade = Grade.Отлично },
@@ -229,7 +229,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = romanova, Course = geometria, Grade = Grade.Отлично },
                     new Enrollment { Student = romanova, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = egoshin, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = egoshin, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = egoshin, Course = algebra, Grade = Grade.Удовлетворительно },
                     new Enrollment { Student = egoshin, Course = lifp, Grade = Grade.Хорошо },
                     new Enrollment { Student = egoshin, Course = tokb, Grade = Grade.Отлично },
@@ -237,7 +237,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = egoshin, Course = geometria, Grade = Grade.Хорошо },
                     new Enrollment { Student = egoshin, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = parfonova, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = parfonova, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = parfonova, Course = algebra, Grade = Grade.Удовлетворительно },
                     new Enrollment { Student = parfonova, Course = lifp, Grade = Grade.Хорошо },
                     new Enrollment { Student = parfonova, Course = tokb, Grade = Grade.Отлично },
@@ -245,7 +245,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = parfonova, Course = geometria, Grade = Grade.Хорошо },
                     new Enrollment { Student = parfonova, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = katin, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = katin, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = katin, Course = algebra, Grade = Grade.Удовлетворительно },
                     new Enrollment { Student = katin, Course = lifp, Grade = Grade.Хорошо },
                     new Enrollment { Student = katin, Course = tokb, Grade = Grade.Отлично },
@@ -253,7 +253,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = katin, Course = geometria, Grade = Grade.Хорошо },
                     new Enrollment { Student = katin, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = davidov, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = davidov, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = davidov, Course = algebra, Grade = Grade.Удовлетворительно },
                     new Enrollment { Student = davidov, Course = lifp, Grade = Grade.Хорошо },
                     new Enrollment { Student = davidov, Course = tokb, Grade = Grade.Отлично },
@@ -261,7 +261,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = davidov, Course = geometria, Grade = Grade.Хорошо },
                     new Enrollment { Student = davidov, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = poscrebishev, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = poscrebishev, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = poscrebishev, Course = algebra, Grade = Grade.Удовлетворительно },
                     new Enrollment { Student = poscrebishev, Course = lifp, Grade = Grade.Хорошо },
                     new Enrollment { Student = poscrebishev, Course = tokb, Grade = Grade.Отлично },
@@ -269,7 +269,7 @@ namespace ElectronicJournal.Data
                     new Enrollment { Student = poscrebishev, Course = geometria, Grade = Grade.Хорошо },
                     new Enrollment { Student = poscrebishev, Course = kyltura, Grade = Grade.Отлично },
 
-                    new Enrollment { Student = akatov, Course = tokb, Grade = Grade.Отлично },
+                    new Enrollment { Student = akatov, Course = safetydatabase, Grade = Grade.Отлично },
                     new Enrollment { Student = akatov, Course = algebra, Grade = Grade.Удовлетворительно },
                     new Enrollment { Student = akatov, Course = lifp, Grade = Grade.Хорошо },
                     new Enrollment { Student = akatov, Course = tokb, Grade = Grade.Отлично },

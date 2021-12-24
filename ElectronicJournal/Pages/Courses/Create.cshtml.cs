@@ -10,7 +10,7 @@ using ElectronicJournal.Models;
 
 namespace ElectronicJournal.Pages.Courses
 {
-    public class CreateModel : PageModel
+    public class CreateModel : DepartmentNamePageModel
     {
         private readonly ElectronicJournal.Data.ElectronicJournalContext _context;
 
@@ -21,25 +21,29 @@ namespace ElectronicJournal.Pages.Courses
 
         public IActionResult OnGet()
         {
-        ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID");
+            PopulateDepartmentsDropDownList(_context);
             return Page();
         }
 
         [BindProperty]
         public Course Course { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var newCourse = new Course();
+
+            if (await TryUpdateModelAsync<Course>(
+                 newCourse,
+                 "course",   
+                 s => s.CourseID, s => s.DepartmentID, s => s.Title))
             {
-                return Page();
+                _context.Courses.Add(newCourse);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Courses.Add(Course);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            PopulateDepartmentsDropDownList(_context, newCourse.DepartmentID);
+            return Page();
         }
     }
 }

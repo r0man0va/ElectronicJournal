@@ -45,14 +45,23 @@ namespace ElectronicJournal.Pages.Teachers
                 return NotFound();
             }
 
-            Teacher = await _context.Teachers.FindAsync(id);
+            Teacher teacher = await _context.Teachers
+                 .Include(i => i.Courses)
+                 .SingleAsync(i => i.ID == id);
 
-            if (Teacher != null)
+            if (teacher == null)
             {
-                _context.Teachers.Remove(Teacher);
-                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
+            var departments = await _context.Departments
+                .Where(d => d.TeacherID == id)
+                .ToListAsync();
+            departments.ForEach(d => d.TeacherID = null);
+
+            _context.Teachers.Remove(teacher);
+
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }
