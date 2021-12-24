@@ -40,6 +40,8 @@ namespace ElectronicJournal.Models
         [Display(Name = "Номер телефона")]
         public string PhoneNumber {get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата зачисления")]
         public DateTime EnrollmentDate { get; set; }  // дата зачисления на курс
         [Display(Name = "Назначенные курсы")]

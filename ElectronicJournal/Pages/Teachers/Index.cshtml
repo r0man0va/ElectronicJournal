@@ -1,0 +1,119 @@
+﻿@page "{id:int?}"
+@model ElectronicJournal.Pages.Teachers.IndexModel
+
+@{
+    ViewData["Title"] = "Преподаватели";
+}
+
+<h2>Преподаватели</h2>
+
+<p>
+    <a asp-page="Create">Создать нового</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Дата рождения</th>
+            <th>Курсы</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TeacherData.Teachers)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.TeacherID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @{
+                        foreach (var course in item.Courses)
+                        {
+                            @course.CourseID @:  @course.Title <br />
+                        }
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Index" asp-route-id="@item.ID">Выбрать</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Детали</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.TeacherData.Courses != null)
+{
+    <h3>Курсы, которые ведет выбранный преподаватель</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Код курса</th>
+            <th>Название</th>
+            <th>Кафедра</th>
+        </tr>
+
+        @foreach (var item in Model.TeacherData.Courses)
+        {
+            string selectedRow = "";
+            if (item.CourseID == Model.CourseID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    <a asp-page="./Index" asp-route-courseID="@item.CourseID">Выбрать</a>
+                </td>
+                <td>
+                    @item.CourseID
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Department.Name
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@if (Model.TeacherData.Enrollments != null)
+{
+    <h3>
+        Студенты, записанные на этот курс
+    </h3>
+    <table class="table">
+        <tr>
+            <th>Имя</th>
+            <th>Оценка</th>
+        </tr>
+        @foreach (var item in Model.TeacherData.Enrollments)
+        {
+            <tr>
+                <td>
+                    @item.Student.FullName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+            </tr>
+        }
+    </table>
+}

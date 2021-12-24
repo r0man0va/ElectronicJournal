@@ -14,6 +14,7 @@ namespace ElectronicJournal.Models
         public string Title { get; set; }
 
         public int DepartmentID { get; set; }
+        [Display(Name = "Кафедра")]
         public Department Department { get; set; }
 
         public ICollection<Enrollment> Enrollments { get; set; }

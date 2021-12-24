@@ -1,0 +1,47 @@
+﻿@page
+@model ElectronicJournal.Pages.Teachers.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить учителя";
+}
+
+<h1>Добавить учителя</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Teacher.LastName" class="control-label"></label>
+                <input asp-for="Teacher.LastName" class="form-control" />
+                <span asp-validation-for="Teacher.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.FirstName" class="control-label"></label>
+                <input asp-for="Teacher.FirstName" class="form-control" />
+                <span asp-validation-for="Teacher.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.DOB" class="control-label"></label>
+                <input asp-for="Teacher.DOB" class="form-control" />
+                <span asp-validation-for="Teacher.DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.PhoneNumber" class="control-label"></label>
+                <input asp-for="Teacher.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Teacher.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
