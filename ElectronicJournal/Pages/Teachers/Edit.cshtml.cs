@@ -11,7 +11,7 @@ using ElectronicJournal.Models;
 
 namespace ElectronicJournal.Pages.Teachers
 {
-    public class EditModel : PageModel
+    public class EditModel : InstructorCoursesPageModel
     {
         private readonly ElectronicJournal.Data.ElectronicJournalContext _context;
 
@@ -30,48 +30,81 @@ namespace ElectronicJournal.Pages.Teachers
                 return NotFound();
             }
 
-            Teacher = await _context.Teachers.FirstOrDefaultAsync(m => m.ID == id);
+            Teacher = await _context.Teachers
+                .Include(i => i.Courses)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Teacher == null)
             {
                 return NotFound();
             }
+            PopulateAssignedCourseData(_context, Teacher);
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id, string[] selectedCourses)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Teacher).State = EntityState.Modified;
+            var teacherToUpdate = await _context.Teachers
+                .Include(i => i.Courses)
+                .FirstOrDefaultAsync(s => s.ID == id);
 
-            try
+            if (teacherToUpdate == null)
             {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Teacher>(
+                teacherToUpdate,
+                "Teacher",
+                i => i.FirstName, i => i.LastName,
+                i => i.DOB, i => i.PhoneNumber))
+            {
+                UpdateTeacherCourses(selectedCourses, teacherToUpdate);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
+            UpdateTeacherCourses(selectedCourses, teacherToUpdate);
+            PopulateAssignedCourseData(_context, teacherToUpdate);
+            return Page();
+        }
+
+        public void UpdateTeacherCourses(string[] selectedCourses,
+                                            Teacher teacherToUpdate)
+        {
+            if (selectedCourses == null)
             {
-                if (!TeacherExists(Teacher.ID))
+                teacherToUpdate.Courses = new List<Course>();
+                return;
+            }
+
+            var selectedCoursesHS = new HashSet<string>(selectedCourses);
+            var teacherCourses = new HashSet<int>
+                (teacherToUpdate.Courses.Select(c => c.CourseID));
+            foreach (var course in _context.Courses)
+            {
+                if (selectedCoursesHS.Contains(course.CourseID.ToString()))
                 {
-                    return NotFound();
+                    if (!teacherCourses.Contains(course.CourseID))
+                    {
+                        teacherToUpdate.Courses.Add(course);
+                    }
                 }
                 else
                 {
-                    throw;
+                    if (teacherCourses.Contains(course.CourseID))
+                    {
+                        var courseToRemove = teacherToUpdate.Courses.Single(
+                                                        c => c.CourseID == course.CourseID);
+                        teacherToUpdate.Courses.Remove(courseToRemove);
+                    }
                 }
             }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool TeacherExists(int id)
-        {
-            return _context.Teachers.Any(e => e.ID == id);
         }
     }
 }
