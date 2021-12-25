@@ -2,10 +2,10 @@
 @model ElectronicJournal.Pages.Teachers.DetailsModel
 
 @{
-    ViewData["Title"] = "О учителе";
+    ViewData["Title"] = "О преподавателе";
 }
 
-<h1>Дополнительная информация об учителе</h1>
+<h1>Дополнительная информация о преподавателе</h1>
 
 <div>
     <hr />
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Teacher.ID">Изменить</a> |
-    <a asp-page="./Index">Вернуться назад</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Teacher.ID" class="btn btn-outline-success">Изменить</a> |
+    <a asp-page="./Index" class="btn btn-outline-secondary">Вернуться назад</a>
 </div>

@@ -30,17 +30,13 @@
                 </select>
                 <span asp-validation-for="Course.DepartmentID" class="text-danger" />
             </div>
-            <div class="form-group">
-                <input style="background-color: RGB(163,31,52)" type="submit" value="Создать" class="btn btn-primary" />
-            </div>
         </form>
     </div>
 </div>
-
 <div>
-    <a asp-page="Index">Обратно к списку</a>
+    <input class="btn btn-outline-success" type="submit" value="Создать"/> |
+    <a asp-page="Index" class="btn btn-outline-secondary">Вернуться назад</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

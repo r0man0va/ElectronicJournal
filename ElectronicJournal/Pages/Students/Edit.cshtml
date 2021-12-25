@@ -43,15 +43,13 @@
                 <input asp-for="Student.EnrollmentDate" class="form-control" />
                 <span asp-validation-for="Student.EnrollmentDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input style="background-color: RGB(163,31,52)" type="submit" value="Сохранить" class="btn btn-primary" />
-            </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Вернуться назад</a>
+    <input class="btn btn-outline-success" type="submit" value="Сохранить" /> |
+    <a asp-page="./Index" class="btn btn-outline-secondary">Вернуться назад</a>
 </div>
 
 @section Scripts {

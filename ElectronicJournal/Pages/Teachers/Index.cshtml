@@ -5,10 +5,10 @@
     ViewData["Title"] = "Преподаватели";
 }
 
-<h2>Преподаватели</h2>
+<h1>Список преподавателей</h1>
 
 <p>
-    <a asp-page="Create">Создать нового</a>
+    <a asp-page="Create" class="btn btn-outline-success">Создать нового</a>
 </p>
 <table class="table">
     <thead>
@@ -47,10 +47,10 @@
                     }
                 </td>
                 <td>
-                    <a asp-page="./Index" asp-route-id="@item.ID">Выбрать</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Детали</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+                    <a asp-page="./Index" asp-route-id="@item.ID" class="btn btn-outline-dark">Выбрать</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-warning">Изменить</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-info">Детали</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Удалить</a>
                 </td>
             </tr>
         }
@@ -77,7 +77,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    <a asp-page="./Index" asp-route-courseID="@item.CourseID">Выбрать</a>
+                    <a asp-page="./Index" asp-route-courseID="@item.CourseID" class="btn btn-outline-dark">Выбрать</a>
                 </td>
                 <td>
                     @item.CourseID
