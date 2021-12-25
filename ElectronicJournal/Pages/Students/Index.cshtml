@@ -12,13 +12,11 @@
 </p>
 
 <form asp-page="./Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Найти по имени:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Поиск" class="btn btn-outline-secondary" /> |
-            <a asp-page="./Index" class="btn btn-outline-secondary">Обратно к списку</a>
-        </p>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Найти по имени:</span>
+        <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+        <input type="submit" value="Поиск" class="btn btn-outline-secondary" />
+        <a asp-page="./Index" class="btn btn-outline-secondary">Обратно к списку</a>
     </div>
 </form>
 

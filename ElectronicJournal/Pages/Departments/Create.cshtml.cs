@@ -21,14 +21,13 @@ namespace ElectronicJournal.Pages.Departments
 
         public IActionResult OnGet()
         {
-        ViewData["TeacherID"] = new SelectList(_context.Teachers, "ID", "FullName");
+            ViewData["TeacherID"] = new SelectList(_context.Teachers, "ID", "FullName");
             return Page();
         }
 
         [BindProperty]
         public Department Department { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

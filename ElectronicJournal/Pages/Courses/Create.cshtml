@@ -12,17 +12,17 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Course.CourseID" class="control-label"></label>
                 <input asp-for="Course.CourseID" class="form-control" />
                 <span asp-validation-for="Course.CourseID" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Course.Title" class="control-label"></label>
                 <input asp-for="Course.Title" class="form-control" />
                 <span asp-validation-for="Course.Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Course.Department" class="control-label"></label>
                 <select asp-for="Course.DepartmentID" class="form-control"
                         asp-items="@Model.DepartmentNameSL">
@@ -30,12 +30,12 @@
                 </select>
                 <span asp-validation-for="Course.DepartmentID" class="text-danger" />
             </div>
+            <div>
+                <input class="btn btn-outline-success" type="submit" value="Создать"/> |
+                <a asp-page="Index" class="btn btn-outline-secondary">Вернуться назад</a>
+            </div>
         </form>
     </div>
-</div>
-<div>
-    <input class="btn btn-outline-success" type="submit" value="Создать"/> |
-    <a asp-page="Index" class="btn btn-outline-secondary">Вернуться назад</a>
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
