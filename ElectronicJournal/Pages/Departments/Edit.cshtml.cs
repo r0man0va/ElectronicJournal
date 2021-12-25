@@ -22,7 +22,7 @@ namespace ElectronicJournal.Pages.Departments
 
         [BindProperty]
         public Department Department { get; set; }
-
+        public SelectList TeacherNameSL { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -36,6 +36,10 @@ namespace ElectronicJournal.Pages.Departments
             {
                 return NotFound();
             }
+
+            TeacherNameSL = new SelectList(_context.Teachers,
+                "ID", "FullName");
+
             return Page();
         }
 
@@ -56,6 +60,10 @@ namespace ElectronicJournal.Pages.Departments
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
+
+            TeacherNameSL = new SelectList(_context.Teachers,
+                "ID", "FullName", departmentToUpdate.TeacherID);
+
 
             return Page();
         }

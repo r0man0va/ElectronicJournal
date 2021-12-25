@@ -24,6 +24,12 @@
                 <span asp-validation-for="Department.StartDate" class="text-danger">
                 </span>
             </div>
+
+            <div class="form-group">
+                <label class="control-label">Администратор</label>
+                <select asp-for="Department.TeacherID" class="form-control" asp-items="@Model.TeacherNameSL"></select>
+                <span asp-validation-for="Department.TeacherID" class="text-danger"></span>
+            </div>
            
             <div class="form-group">
                 <input class="btn btn-outline-success" type="submit" value="Сохранить" class="btn btn-primary" /> 
