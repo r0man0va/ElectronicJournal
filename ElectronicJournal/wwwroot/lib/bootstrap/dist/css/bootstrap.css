@@ -229,8 +229,9 @@ sup {
 }
 
 a {
-  color: #0d6efd;
-  text-decoration: underline;
+    color: black;
+  //color: #0d6efd;
+  text-decoration: none;
 }
 a:hover {
   color: #0a58ca;
@@ -7736,6 +7737,10 @@ textarea.form-control-lg {
 
 .text-opacity-100 {
   --bs-text-opacity: 1;
+}
+
+.bg-red {
+    background-color: rgb(163,31,52);
 }
 
 .bg-primary {

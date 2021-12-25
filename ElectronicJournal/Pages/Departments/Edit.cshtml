@@ -1,0 +1,38 @@
+﻿@page "{id:int}"
+@model ElectronicJournal.Pages.Departments.EditModel
+@{
+    ViewData["Title"] = "Изменить";
+}
+<h2>Изменить</h2>
+<h4>Кафедры</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Department.DepartmentID" />
+           
+            <div class="form-group">
+                <label asp-for="Department.Name" class="control-label"></label>
+                <input asp-for="Department.Name" class="form-control" />
+                <span asp-validation-for="Department.Name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Department.StartDate" class="control-label"></label>
+                <input asp-for="Department.StartDate" class="form-control" />
+                <span asp-validation-for="Department.StartDate" class="text-danger">
+                </span>
+            </div>
+           
+            <div class="form-group">
+                <input class="btn btn-outline-success" type="submit" value="Сохранить" class="btn btn-primary" /> 
+                <a class="btn btn-outline-secondary" asp-page="./Index">Вернуться назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

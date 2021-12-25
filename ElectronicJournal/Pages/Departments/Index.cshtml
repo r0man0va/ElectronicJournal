@@ -1,0 +1,44 @@
+﻿@page
+@model ElectronicJournal.Pages.Departments.IndexModel
+
+@{
+    ViewData["Title"] = "Кафедры";
+}
+
+<h1>Кафедры</h1>
+
+<p>
+    <a class="btn btn-outline-success" asp-page="Create">Создать новую</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department[0].Administrator)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Department) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Administrator.FullName)
+            </td>
+           
+            <td>
+                <a class="btn btn-outline-warning" asp-page="./Edit" asp-route-id="@item.DepartmentID">Изменить</a> |
+                <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.DepartmentID">Детали</a> |
+                <a class="btn btn-outline-danger" asp-page="./Delete" asp-route-id="@item.DepartmentID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
