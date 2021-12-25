@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ElectronicJournal.Data;
 using ElectronicJournal.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicJournal.Pages.Departments
 {
@@ -18,10 +19,17 @@ namespace ElectronicJournal.Pages.Departments
         {
             _context = context;
         }
-
+        public IQueryable<Teacher> listTeachers { get; set; }
         public IActionResult OnGet()
         {
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "ID", "FullName");
+            listTeachers = _context.Teachers
+                .Include(d => d.Department)
+                .Where(i => i.Department.Administrator.ID != i.ID);
+
+            ViewData["TeacherID"] = new SelectList(
+                listTeachers,
+                "ID",
+                "FullName");
             return Page();
         }
 

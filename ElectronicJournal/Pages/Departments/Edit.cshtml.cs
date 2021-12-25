@@ -23,6 +23,7 @@ namespace ElectronicJournal.Pages.Departments
         [BindProperty]
         public Department Department { get; set; }
         public SelectList TeacherNameSL { get; set; }
+        public IQueryable<Teacher> listTeachers { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -37,8 +38,15 @@ namespace ElectronicJournal.Pages.Departments
                 return NotFound();
             }
 
-            TeacherNameSL = new SelectList(_context.Teachers,
-                "ID", "FullName");
+            listTeachers = _context.Teachers
+                .Include(d => d.Department)
+                .Where(i => i.Department.Administrator.ID != i.ID);
+
+            TeacherNameSL = new SelectList(
+                listTeachers,
+                "ID",
+                "FullName"
+                );
 
             return Page();
         }
@@ -55,7 +63,7 @@ namespace ElectronicJournal.Pages.Departments
             if (await TryUpdateModelAsync<Department>(
                 departmentToUpdate,
                 "department",
-                s => s.Name, s => s.StartDate))
+                s => s.Name, s => s.StartDate, s => s.TeacherID))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
