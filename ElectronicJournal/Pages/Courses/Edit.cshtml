@@ -28,11 +28,11 @@
                         asp-items="@Model.DepartmentNameSL"></select>
                 <span asp-validation-for="Course.DepartmentID" class="text-danger"></span>
             </div>
+            <div>
+                <input class="btn btn-outline-success" type="submit" value="Сохранить" /> |
+                <a asp-page="./Index" class="btn btn-outline-secondary">Вернуться назад</a>
+            </div>
         </form>
-        <div>
-            <input class="btn btn-outline-success" type="submit" value="Сохранить" /> |
-            <a asp-page="./Index" class="btn btn-outline-secondary">Вернуться назад</a>
-        </div>
     </div>
 </div>
 
