@@ -7827,6 +7827,10 @@ textarea.form-control-lg {
   background-image: var(--bs-gradient) !important;
 }
 
+.bg-red {
+    background-color: RGB(163,31,52);
+}
+
 .user-select-all {
   -webkit-user-select: all !important;
   -moz-user-select: all !important;

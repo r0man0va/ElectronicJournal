@@ -8,7 +8,7 @@
 <h1>Список студентов</h1>
 
 <p>
-    <a asp-page="Create">Создать нового</a>
+    <a asp-page ="Create" class="btn btn-outline-success">Создать нового</a>
 </p>
 
 <form asp-page="./Index" method="get">
@@ -16,8 +16,8 @@
         <p>
             Найти по имени:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input style="background-color: RGB(163,31,52)" type="submit" value="Поиск" class="btn btn-primary" /> |
-            <a asp-page="./Index">Обратно к списку</a>
+            <input type="submit" value="Поиск" class="btn btn-outline-secondary" /> |
+            <a asp-page="./Index" class="btn btn-outline-secondary">Обратно к списку</a>
         </p>
     </div>
 </form>
@@ -54,9 +54,9 @@
                 @Html.DisplayFor(modelItem => item.GroupName)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Детали</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-warning">Изменить</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-info">Детали</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Удалить</a> 
             </td>
         </tr>
 }

@@ -2,10 +2,10 @@
 @model ElectronicJournal.Pages.Teachers.DeleteModel
 
 @{
-    ViewData["Title"] = "Удалить учителя";
+    ViewData["Title"] = "Удалить преподавателя";
 }
 
-<h1>Удалить учителя</h1>
+<h1>Удалить преподавателя</h1>
 
 <h3>Вы действительно хотите удалить?</h3>
 <div>
@@ -39,7 +39,7 @@
     
     <form method="post">
         <input type="hidden" asp-for="Teacher.ID" />
-        <input style="background-color: RGB(163,31,52)" type="submit" value="Удалить" class="btn btn-danger" /> |
-        <a asp-page="./Index">Вернуться назад</a>
+        <input class="btn btn-outline-danger" type="submit" value="Удалить" /> |
+        <a asp-page="./Index" class="btn btn-outline-secondary">Вернуться назад</a>
     </form>
 </div>

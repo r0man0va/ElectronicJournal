@@ -2,10 +2,10 @@
 @model ElectronicJournal.Pages.Teachers.EditModel
 
 @{
-    ViewData["Title"] = "Изменить учителя";
+    ViewData["Title"] = "Изменить преподавателя";
 }
 
-<h1>Изменить данные об учителе</h1>
+<h1>Изменить данные о преподавателе</h1>
 
 <hr />
 <div class="row">
@@ -58,15 +58,13 @@
                     </table>
                 </div>
             </div>
-            <div class="form-group">
-                <input style="background-color: RGB(163,31,52)" type="submit" value="Сохранить" class="btn btn-primary" />
-            </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Вернуться назад</a>
+    <input class="btn btn-outline-success" type="submit" value="Сохранить" /> |
+    <a asp-page="./Index" class="btn btn-outline-secondary">Вернуться назад</a>
 </div>
 
 @section Scripts {
